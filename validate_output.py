@@ -21,16 +21,6 @@ def calculatemd5FromFile(filepath, chunksize=4096):
     return hash_md5.hexdigest()
 
 
-def write_dict_to_json(dictname, output_filename):
-    '''
-    does not check if the outputfilename exists,
-    just overwrites. There be dragons.
-    '''
-    with open(output_filename, 'w') as f:
-        json.dump(dictname, f)
-    return None
-
-
 def main():
     output_md5 = dict()
     for key in KNOWN_FILES_MD5:
