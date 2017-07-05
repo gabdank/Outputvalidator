@@ -37,13 +37,10 @@ def main():
         output_md5[key] = calculatemd5FromFile(key)
 
     result = {key: 'Match' if output_md5[key] == KNOWN_FILES_MD5[key] else 'Not match' for key in output_md5}
-
     overall = all([output_md5[key] == KNOWN_FILES_MD5[key] for key in output_md5])
-
     pass_status = 'PASS' if overall else 'FAIL'
-
     result['Overall'] = pass_status
-    
+
     with open('results.json', 'w') as f:
         json.dump(result, f)
 
