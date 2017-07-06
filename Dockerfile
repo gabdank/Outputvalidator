@@ -13,7 +13,7 @@ MAINTAINER Idan Gabdank
 # Install base packages: git, python, java
 RUN apt-get update && apt-get install -y \
     git \
-    python-dev
+    python
 
 RUN mkdir image_software
 

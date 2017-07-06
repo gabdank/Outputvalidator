@@ -32,20 +32,20 @@ def calculatemd5FromFile(filepath, chunksize=4096):
 
 def main():
     output_md5 = dict()
-    for filename in glob.glob(sys.argv[1]+'*.qc'):
+    for filepath in glob.glob(sys.argv[1]+'/*.qc'):
+        filename = filepath.strip().split('/')[-1]
         print (filename)
         if filename in KNOWN_FILES_MD5:
-            output_md5[filename] = calculatemd5FromFile(filename)
+            output_md5[filename] = calculatemd5FromFile(filepath)
 
     result = {key: 'Match' if
               output_md5[key] == KNOWN_FILES_MD5[key] else
               'Not match' for key in output_md5}
     overall = all(
         [output_md5[key] == KNOWN_FILES_MD5[key] for key in output_md5])
-    pass_status = 'PASS' if overall else 'FAIL'
-    result['Overall'] = pass_status
 
-    print (result)
+    pass_status = 'PASS' if overall and output_md5 else 'FAIL'
+    result['Overall'] = pass_status
     with open('results.json', 'w') as f:
         json.dump(result, f)
 
