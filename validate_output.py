@@ -33,6 +33,7 @@ def calculatemd5FromFile(filepath, chunksize=4096):
 def main():
     output_md5 = dict()
     for filename in glob.glob(sys.argv[1]+'*.qc'):
+        print (filename)
         if filename in KNOWN_FILES_MD5:
             output_md5[filename] = calculatemd5FromFile(filename)
 
@@ -44,6 +45,7 @@ def main():
     pass_status = 'PASS' if overall else 'FAIL'
     result['Overall'] = pass_status
 
+    print (result)
     with open('results.json', 'w') as f:
         json.dump(result, f)
 
