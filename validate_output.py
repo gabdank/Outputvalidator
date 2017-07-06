@@ -46,7 +46,7 @@ def main():
 
     pass_status = 'PASS' if overall and output_md5 else 'FAIL'
     result['Overall'] = pass_status
-    with open(sys.argv[1]+'/results.json', 'w') as f:
+    with open('results.json', 'w') as f:
         json.dump(result, f)
 
 
