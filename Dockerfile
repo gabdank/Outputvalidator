@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir image_software
 
 # Get output validator repository
-RUN cd /image_software && git clone https://github.com/ottojolanki/Outputvalidator.git
+RUN cd /image_software && git clone https://github.com/gabdank/Outputvalidator.git
 RUN cd /image_software/Outputvalidator && git fetch && git pull
 
 ENTRYPOINT ["python", "/image_software/Outputvalidator/validate_output.py"]
